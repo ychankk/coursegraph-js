@@ -1,20 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     const canvas = document.getElementById('courseCanvas');
     const ctx = canvas.getContext('2d');
-    const data = [
-        { year: 1, semester: 1, subject: '리그오브레전드' },
-        { year: 1, semester: 1, subject: '발로란트' },
-        { year: 1, semester: 1, subject: '피파온라인' },
-        { year: 1, semester: 1, subject: '배틀그라운드' },
-        { year: 1, semester: 2, subject: '로스트아크' },
-        { year: 2, semester: 1, subject: '발로란트' },
-        { year: 2, semester: 1, subject: '크레이지아케이드' },
-        { year: 3, semester: 2, subject: '서든어택' },
-        { year: 4, semester: 2, subject: '오버워치' },
-        { year: 4, semester: 2, subject: '스타듀밸리' }
-    ];
 
-    drawGraph(data, ctx);
+    // JSON 파일 로드
+    fetch('courses.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            drawGraph(data, ctx);
+        })
+        .catch(error => console.error('Error loading JSON:', error));
 });
 
 function drawGraph(data, ctx) {
