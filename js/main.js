@@ -88,9 +88,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .enter().append("line")
         .attr("class", "link")
         .attr("x1", d => d.source.x + 50)
-        .attr("y1", d => d.source.y + 20)
+        .attr("y1", d => d.source.y + 40) // 노드의 아래에서 시작
         .attr("x2", d => d.target.x + 50)
-        .attr("y2", d => d.target.y)
+        .attr("y2", d => d.target.y) // 노드의 위에서 끝
         .attr("marker-end", "url(#arrow)");
 
     // 노드 그리기
@@ -99,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .enter().append("g")
         .attr("class", "node")
         .attr("transform", d => `translate(${d.x},${d.y})`);
+
     // 글씨가 보이도록 노드에 테두리만 설정
     node.append("rect")
         .attr("width", 100)
@@ -106,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .attr("rx", 5)
         .attr("ry", 5)
         .attr("stroke", "#000")
-        .attr("fill", "none"); 
+        .attr("fill", "none");
 
     node.append("text")
         .attr("dx", 10)
