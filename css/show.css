@@ -1,0 +1,18 @@
+.node {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5px;
+    background: none;
+}
+.link {
+    fill: none;
+    stroke: #666;
+    stroke-width: 2px;
+}
+.arrowHead {
+    fill: #666;
+}
+rect {
+    stroke: #000;
+    fill: none;
+}
