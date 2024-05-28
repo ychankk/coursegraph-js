@@ -2,7 +2,7 @@
 // 문서가 로드되면 컴퓨터 공학과 이수체계도 ce_cources.json 파일을 읽어서
 // SVG 형식으로 도표를 그림
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('../courses.json')
+    fetch('/courses.json') // 상대경로를 절대경로로 변경
         // 파일을 가져오면 json 파일 형식으로 변환함
         .then(response => response.json())
         .then(courses => {
