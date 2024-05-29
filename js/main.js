@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
   fetch('../courses.json')
     .then((response) => response.json())
     .then((courses) => {
-      const width = 1000;
+      const width = 2000;
       const height = 2000;
       const svg = d3.select('svg').attr('width', width).attr('height', height);
 
