@@ -28,5 +28,5 @@ Use local IP as host를 활성화 시켜줍니다.
 종료를 원한다면 Stop Live Server를 클릭하면 라이브 서버가 비활성화 됩니다.
 
 ---
-![image](https://github.com/oss2024hnu/coursegraph-js/assets/97035336/201572c2-0f6e-4b02-b33c-f083d0c1f74e)<br><br>
-또 다른 방법으로는 vscode 하단에 Go Live를 눌러서 실행시킬 수 있습니다.
+![방법6](https://github.com/oss2024hnu/coursegraph-js/assets/162093749/1e7ed3ba-593b-48a9-8a5f-c00ef964902b)<br><br> 
+그림과 같이 우측 하단에 Go Live를 눌러서 실행 하면 라이브 서버를 활성화 시킬 수 있습니다.
