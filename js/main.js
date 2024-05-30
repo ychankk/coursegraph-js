@@ -1,10 +1,26 @@
-document.addEventListener('DOMContentLoaded', function () {
-  fetch('../courses.json')
-    .then((response) => response.json())
-    .then((courses) => {
-      const width = 2000;
-      const height = 2000;
-      const svg = d3.select('svg').attr('width', width).attr('height', height);
+// 문서가 로드되면 컴퓨터 공학과 이수체계도 ce_cources.json 파일을 읽어서
+// SVG 형식으로 도표를 그림
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('/courses.json') // 상대경로를 절대경로로 변경
+        // 파일을 가져오면 json 파일 형식으로 변환함
+        .then(response => response.json())
+        .then(courses => {
+        // json 형식의 데이터가 전달되면 그림을 그림
+        // 기존의 코드 문단을 별도의 함수로 분리
+
+                drawSVGGraph(courses);
+            })
+            .catch(error => console.error('Error loading JSON:', error));
+    });
+
+// 전달된 이수체계도 데이터를 SVG 형식으로 그림을 그림
+function drawSVGGraph(courses)
+{
+    const width = 1000;
+    const height = 2000;
+    const svg = d3.select("svg")
+        .attr("width", width)
+        .attr("height", height);
 
       // 학년, 학기별 그룹
       const groupedCourses = {};
@@ -89,20 +105,18 @@ document.addEventListener('DOMContentLoaded', function () {
         .attr('dy', 25)
         .text((d) => d.name);
 
-      // 화살표
-      svg
-        .append('defs')
-        .append('marker')
-        .attr('id', 'arrow')
-        .attr('viewBox', '0 -5 10 10')
-        .attr('refX', 5)
-        .attr('refY', 0)
-        .attr('markerWidth', 6)
-        .attr('markerHeight', 6)
-        .attr('orient', 'auto')
-        .append('path')
-        .attr('d', 'M0,-5L10,0L0,5')
-        .attr('class', 'arrowHead');
-    })
-    .catch((error) => console.error('Error loading courses:', error));
-});
+    // 화살표
+    svg.append("defs").append("marker")
+        .attr("id", "arrow")
+        .attr("viewBox", "0 -5 10 10")
+        .attr("refX", 5)
+        .attr("refY", 0)
+        .attr("markerWidth", 6)
+        .attr("markerHeight", 6)
+        .attr("orient", "auto")
+        .append("path")
+        .attr("d", "M0,-5L10,0L0,5")
+        .attr("class", "arrowHead");
+}
+    // .catch((error) => console.error('Error loading courses:', error));
+
