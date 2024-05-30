@@ -1,17 +1,28 @@
 // 문서가 로드되면 컴퓨터 공학과 이수체계도 ce_cources.json 파일을 읽어서
 // SVG 형식으로 도표를 그림
-document.addEventListener('DOMContentLoaded', function () {
-  fetch('/data/courses.json') // 상대경로를 절대경로로 변경
-    // 파일을 가져오면 json 파일 형식으로 변환함
-    .then((response) => response.json())
-    .then((courses) => {
-      // json 형식의 데이터가 전달되면 그림을 그림
-      // 기존의 코드 문단을 별도의 함수로 분리
+document.addEventListener('DOMContentLoaded', function() {
 
-      drawSVGGraph(courses);
-    })
-    .catch((error) => console.error('Error loading JSON:', error));
-});
+  // JSON 파일 로드
+  fetch('/data/courses.json')// 상대경로를 절대경로로 변경
+          // 파일을 가져오면 json 파일 형식으로 변환함
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+          }
+          return response.json();
+      })
+      .then(courses => {
+          // json 형식의 데이터가 전달되면 그림을 그림
+          // 기존의 코드 문단을 별도의 함수로 분리
+          drawSVGGraph(courses);
+      })
+      .catch(error => {
+          console.error('Error loading JSON:', error);
+          alert('Failed to load the JSON file. Please check the file path and try again.');
+      });
+  
+    });
+
 
 // 전달된 이수체계도 데이터를 SVG 형식으로 그림을 그림
 function drawSVGGraph(courses) {
