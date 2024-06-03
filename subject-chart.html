@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>과목 이수체계도</title>
+    <link rel="stylesheet" href="./css/subject-chart.css" />
+  </head>
+  <body>
+    <h1>과목 이수체계도</h1>
+    <button><a href="/index.html">돌아가기</a></button>
+
+    <br /><br />
+
+    <div id="basicMajor">전공기초(필수)</div>
+    <div id="majorSelection">공통권장과목</div>
+
+    <pre class="mermaid">
+        %% Subgraph example
+        graph LR
+        
+            subgraph "1학년"
+                subgraph "1학년 1학기"
+                A1["웹스크립트프로그래밍"]
+                A2["프로그래밍실습"]
+                A3["컴퓨터개론"]
+                A4["확률과 통계"]
+                end
+                %% 1학년 2학기
+                subgraph "1학년 2학기"
+                B1["고급프로그래밍"]
+                B2["정보보호개론"]
+                B3["이산구조"]
+                B4["파이썬프로그래밍"]
+            end
+            end
+        
+            subgraph "2학년"
+            %% 2학년 1학기
+            subgraph "2학년 1학기"
+                C1["시스템프로그래밍"]
+                C2["시스템보안"]
+                C3["자료구조"]
+                C4["오픈소스sw개발"]
+                C5["컴퓨터네트워크"]
+            end
+            %% 2학년 2학기
+            subgraph "2학년 2학기"
+                D1["알고리즘"]
+                D2["계산이론"]
+                D3["객체지향프로그래밍"]
+                D4["컴퓨터구조"]
+                D5["임베디드시스템 및 실습"]
+                D6["양자컴퓨팅개론"]
+            end
+            end
+        
+            subgraph "3학년"
+                %% 3학년 1학기
+                subgraph "3학년 1학기"
+                    E1["모바일프로그래밍"]
+                    E2["프로그래밍언어론"]
+                    E3["머신러닝의이해"]
+                    E4["운영체제"]
+                    E5[".NET프로그래밍"]
+                end
+                %% 3학년 2학기
+                subgraph "3학년 2학기"
+                F1["네트워크 프로그래밍 및 보안"]
+                F2["인공지능"]
+                F3["컴퓨터그래픽스"]
+                F4["데이터베이스"]
+                F5["소프트웨어공학"]
+                end
+            end
+
+            subgraph 4학년
+                %% 4학년 1학기
+                subgraph "4학년 1학기"
+                G1["웹서버프로그래밍"]
+                G2["가상증강현실"]
+                G3["게임서버프로그래밍"]
+                G4["데이터베이스프로그래밍"]
+            end
+            %% 4학년 2학기
+                subgraph "4학년 2학기"
+                H1["역공학"]
+                H2["암호의 이해"]
+                H3["빅데이터"]
+                H4["클라우드컴퓨팅"]
+                H5["블록체인"]
+            end
+        end
+
+        subgraph "캡스톤"
+            I1["캡스턴디자인"]
+            I2["융합캡스턴디자인"]
+        end
+        
+
+        %% 학년 간 과목 이수 연결
+        A1 --> G1
+        A2 --> B1
+        A3 --> C1
+        A3 --> C4
+        A4 --> E3
+        A4 --> H2
+    
+        B1 --> C5
+        B1 --> E5
+        B2 --> C2
+        B2 --> F1
+        B2 --> H2
+        B3 --> C3
+        B3 --> D2
+        B3 --> D3
+        B4 --> E3
+    
+        C1 --> D5
+        C2 --> H1
+        C3 --> D1
+        C3 --> F4
+        C4 --> F5
+        C5 --> F1
+        C5 --> G1
+        C5 --> G3
+        C5 --> H4
+        C5 --> H5
+    
+        D1 --> D6
+        D1 -->F2
+        D2 --> E2
+        D3 --> E1
+        D3 --> E5
+        D4 --> E4
+        D4 --> H1
+    
+        E4 --> G3
+        E4 --> H1
+        E4 --> H4
+        E5 --> F3
+    
+        F3 --> G2
+        F4 --> G4
+        F5 --> I1
+        F5 --> I2
+    
+        G4 --> H3
+
+        
+        style A1 fill:#fff, stroke:#999999
+        style C1 fill:#fff, stroke:#999999
+        style C4 fill:#fff, stroke:#999999
+        style D5 fill:#fff, stroke:#999999
+        style D6 fill:#fff, stroke:#999999
+        style E1 fill:#fff, stroke:#999999
+        style E3 fill:#fff, stroke:#999999
+        style E5 fill:#fff, stroke:#999999
+        style F1 fill:#fff, stroke:#999999
+        style F3 fill:#fff, stroke:#999999
+        style G1 fill:#fff, stroke:#999999
+        style G2 fill:#fff, stroke:#999999
+        style G3 fill:#fff, stroke:#999999
+        style G4 fill:#fff, stroke:#999999
+        style H1 fill:#fff, stroke:#999999
+        style H2 fill:#fff, stroke:#999999
+        style H3 fill:#fff, stroke:#999999
+        style H4 fill:#fff, stroke:#999999
+        style H5 fill:#fff, stroke:#999999
+    
+        style B1 fill:#FFD072, stroke:#b28704
+        style B2 fill:#FFD072, stroke:#b28704
+        style C2 fill:#FFD072, stroke:#b28704
+        style C3 fill:#FFD072, stroke:#b28704
+        style D1 fill:#FFD072, stroke:#b28704
+        style D2 fill:#FFD072, stroke:#b28704
+        style D3 fill:#FFD072, stroke:#b28704
+        style C5 fill:#FFD072, stroke:#b28704
+        style D4 fill:#FFD072, stroke:#b28704
+        style E2 fill:#FFD072, stroke:#b28704
+        style E4 fill:#FFD072, stroke:#b28704
+        style F2 fill:#FFD072, stroke:#b28704
+        style F4 fill:#FFD072, stroke:#b28704
+        style F5 fill:#FFD072, stroke:#b28704
+    
+        style 1학년 fill:#bee9e8
+        style 2학년 fill:#87CEFA
+        style 3학년 fill:#cae9ff
+        style 4학년 fill:#ADD8E6
+        
+    </pre>
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
