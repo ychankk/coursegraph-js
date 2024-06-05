@@ -252,6 +252,25 @@
     <script type="module">
       import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
       mermaid.initialize({ startOnLoad: true });
+      function doSearch(text) {
+            if (window.find(text)) {
+                console.log('Text found:', text);
+            } else {
+                console.log('Text not found:', text);
+            }
+        }
+      document.getElementById('SearchBtn').addEventListener('click', function() {
+            doSearch(document.getElementById('SearchTxt').value);
+        });
+
+        document.getElementById('SearchTxt').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                doSearch(event.target.value);
+            }
+        });
+        document.getElementById('backButton').addEventListener('click', function() {
+            window.location.href = '/index.html';
+        });
     </script>
   </body>
 </html>
