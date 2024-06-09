@@ -31,6 +31,19 @@ Use local IP as host를 활성화 시켜줍니다.
 ![방법6](https://github.com/oss2024hnu/coursegraph-js/assets/162093749/1e7ed3ba-593b-48a9-8a5f-c00ef964902b)<br><br> 
 그림과 같이 우측 하단에 Go Live를 눌러서 실행 하면 라이브 서버를 활성화 시킬 수 있습니다.
 
-## 파이썬 웹서버 설치
+
+# 파이썬에서 웹서버를 띄우는 방법
+https://docs.python.org/3/library/http.server.html 를 참고하여 만들었습니다.
+
+---
+http.server(Python 내장 라이브러리 사용)
 아래 CLI 커맨드 한 줄이면 현재 디렉터리의 파일을 서빙하는 HTTP 웹 서버를 띄울 수 있습니다.
-python -m http.server
+![http server](https://github.com/oss2024hnu/coursegraph-js/assets/127175838/e25deb82-faa0-4ae7-8306-14a6ef7a1143)
+
+이후 이후 웹 브라우저에서 http://localhost:8000 주소로 접속하면 파일 목록이 보이거나 혹은 HTML 파일을 볼 수 있습니다.
+
+추가옵션
+![http server](https://github.com/oss2024hnu/coursegraph-js/assets/127175838/7b3530a2-4b06-4a35-a463-f43c94b7677f)
+위 코드를 예를 들어 포트를 3000으로 바꿀수 있으며 바인딩 주소 또한 바꿀수 있습니다.
+
+현재 디렉토리가 아닌 다른 디렉토리를 루트로 하고싶다면 --directory 를 사용하여 바꿀수있습니다.
