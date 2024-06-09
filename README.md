@@ -31,6 +31,7 @@ Use local IP as host를 활성화 시켜줍니다.
 ![방법6](https://github.com/oss2024hnu/coursegraph-js/assets/162093749/1e7ed3ba-593b-48a9-8a5f-c00ef964902b)<br><br> 
 그림과 같이 우측 하단에 Go Live를 눌러서 실행 하면 라이브 서버를 활성화 시킬 수 있습니다.
 
+
 # 파이썬에서 웹서버를 띄우는 방법
 https://docs.python.org/3/library/http.server.html 를 참고하여 만들었습니다.
 
