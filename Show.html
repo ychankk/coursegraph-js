@@ -42,10 +42,11 @@
         });
 
         function doSearch(text) {
-            if (window.find(text)) {
-                console.log('Text found:', text);
+            const result = window.find(text);
+            if (!result) {
+                alert('일치하는 텍스트를 찾을 수 없습니다.');
             } else {
-                console.log('Text not found:', text);
+                console.log('Text found:', text);
             }
         }
 
