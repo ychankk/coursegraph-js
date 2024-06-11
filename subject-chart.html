@@ -321,6 +321,14 @@
 
             console.log('Script loaded and DOM fully parsed');
         });
+
+        // 페이지 로드 시 특정 섹션으로 자동 스크롤
+        window.onload = function() {
+            const element = document.getElementById("basicMajor");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        };
     </script>
 </body>
 
