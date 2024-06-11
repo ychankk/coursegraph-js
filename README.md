@@ -45,7 +45,7 @@ python -m http.server
 
 ## 추가 옵션
 ```
-python -m http.server
+python -m http.server 3000 --bind 127.0.0.1
 ```
 위 코드를 예를 들어 포트를 3000으로 바꿀수 있으며 바인딩 주소 또한 바꿀수 있습니다.
 
