@@ -42,12 +42,24 @@
         });
 
         function doSearch(text) {
-            const result = window.find(text);
-            if (!result) {
-                alert('일치하는 과목을 찾을 수 없습니다.');
-            } else {
-                console.log('Text found:', text);
-            }
+            let contents = document.querySelectorAll("text");
+            console.log(contents);
+            let isfind = false;
+            contents.forEach(content => {
+                if (doDeleteSpace(text) === doDeleteSpace(content.textContent)) {
+                    console.log('Text found:', text);
+                    const foundText = window.find(text);
+                    if(!foundText)
+                        window.find(doDeleteSpace(text));
+                    isfind = true;
+                }
+            });
+            if(isfind)
+                return;
+            alert('일치하는 과목을 찾을 수 없습니다.');
+        }
+        function doDeleteSpace(text){
+            return text.split(' ').join('');
         }
 
         document.getElementById('SearchBtn').addEventListener('click', function() {
