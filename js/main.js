@@ -104,8 +104,7 @@ function drawSVGGraph(courses) {
     .attr('height', 40)
     .attr('rx', 5)
     .attr('ry', 5)
-    .attr('stroke', '#000')
-    .attr('fill', 'none');
+    .attr('stroke', '#000');
 
   node
     .append('text')
