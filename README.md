@@ -10,7 +10,7 @@ VSCode를 실행하여 F1키를 누릅니다.
 
 git clone을 입력합니다.
 
-Git: Clone 메뉴를 선택합니다.(만약, git clone 입력해도 No matching commands 글자가 뜨면 깃허브를 설치한 후 다시 위 방법을 실행합니다)
+Git: Clone 메뉴를 선택합니다.(만약, git clone 입력해도 No matching commands 글자가 뜨면 깃허브를 설치한 후 다시 두번째 순서부터 진행합니다)
 
 GitHub의 repository 주소를 복사하여 붙여넣기(입력)합니다.
 
