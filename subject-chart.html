@@ -28,6 +28,13 @@
     <div id="basicMajor">전공기초(필수)</div>
     <div id="majorSelection">공통권장과목</div>
 
+    <div id="navigation">
+        <button onclick="scrollToSection('1학년')">1학년</button>
+        <button onclick="scrollToSection('2학년')">2학년</button>
+        <button onclick="scrollToSection('3학년')">3학년</button>
+        <button onclick="scrollToSection('4학년')">4학년</button>
+    </div>
+
     <pre class="mermaid">
         %% Subgraph example
         graph LR
@@ -339,6 +346,14 @@
                 element.scrollIntoView({ behavior: "smooth", block: "start" });
             }
         };
+
+         function scrollToSection(sectionId) {
+            const section = document.querySelector(`subgraph[title="${sectionId}"]`);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+         }
+
     </script>
 </body>
 
