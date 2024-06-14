@@ -40,9 +40,16 @@
             const reader = new FileReader();
             reader.onload = function (e) {
                 try {
-                    const courses = JSON.parse(e.target.result);
+                    const result = JSON.parse(e.target.result);
+                    let courses;
+                    if (fileName.includes('ai.json') || fileName.includes('ce.json') || fileName.includes('me.json')) {
+                        courses = result.과목;
+                    } else {
+                        courses = result;
+                    }
                     drawSVGGraph(courses);
                 } catch (error) {
+                    console.error('Error parsing JSON:', error);
                     alert('파일 형식이 맞지 않습니다.');
                 }
             };
