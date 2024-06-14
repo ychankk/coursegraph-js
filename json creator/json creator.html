@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Creator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>JSON Creator</h1>
+        <form id="jsonForm">
+            <div id="inputContainer"></div>
+            <button type="button" id="addButton">Add Entry</button>
+            <div class="file-name-container">
+                <label for="fileName">File Name: </label>
+                <input type="text" id="fileName" required>
+            </div>
+            <button type="submit">Generate JSON</button>
+        </form>
+        <textarea id="jsonOutput" placeholder="Your JSON output will appear here" readonly></textarea>
+    </div>
+    <script src="creator main.js"></script>
+</body>
+</html>
+
