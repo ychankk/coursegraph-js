@@ -18,7 +18,7 @@
 
 <body>
     <h1>과목 이수체계도</h1>
-    <button><a href="/index.html">돌아가기</a></button>
+    <button id="goBackBtn">돌아가기</button>
 
     <br /><br />
     <div id="searchContainer">
@@ -360,12 +360,12 @@
         // 다른 과목의 세부 정보 추가
     };
 
-    document.querySelectorAll('.mermaid text').forEach(node => {
-        node.addEventListener('click', () => {
-            const subject = node.textContent;
-            if (subjectDetails[subject]) {
-                alert(subjectDetails[subject]);
-            }
+            document.getElementById('goBackBtn').addEventListener('click', function () {
+                window.location.href = '/index.html';
+            });
+
+            console.log('Script loaded and DOM fully parsed');
+
         });
     });
 
