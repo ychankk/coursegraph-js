@@ -27,6 +27,7 @@ function drawSVGGraph(courses) {
   let yOffset = 50;
   for (const [semester, courses] of Object.entries(groupedCourses).sort()) {
     let xOffset = 50;
+
     courses.forEach((course) => {
       nodes.push({
         name: course.과목명,
@@ -85,8 +86,7 @@ function drawSVGGraph(courses) {
     .attr('height', 40)
     .attr('rx', 5)
     .attr('ry', 5)
-    .attr('stroke', '#000')
-    .attr('fill', 'none');
+    .attr('stroke', '#000');
 
   // 노드의 텍스트
   node
