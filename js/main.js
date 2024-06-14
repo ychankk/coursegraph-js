@@ -48,6 +48,12 @@ function drawSVGGraph(courses) {
     courses.forEach((course) => {
       nodes.push({
         name: course.과목명,
+        학년: course.학년,
+        학기: course.학기,
+        트랙: course.트랙,
+        마이크로디그리: course.마이크로디그리,
+        실습여부: course.실습여부,
+        구분: course.구분,
         x: xOffset,
         y: yOffset,
         prerequisites: course.선수과목 || [],
