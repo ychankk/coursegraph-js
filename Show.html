@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/search.css">
 </head>
 <body>
-    <h1 id="courseName">과목명 :</h1>
+    <h1 id="courseName">학과명 :</h1>
     <button id="backButton">돌아가기</button>
     <input type="file" id="fileInput" />
     <div id="output"></div>
@@ -16,6 +16,7 @@
         <input type="text" id="SearchTxt" placeholder="Search...">
         <input type="button" id="SearchBtn" value="Search">
     </div>
+    <svg></svg>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./js/main.js"></script>
@@ -27,16 +28,21 @@
 
             if (!file) {
                 output.innerHTML = 'No file selected';
-                courseName.textContent = '과목명 : 파일이 선택되지 않았습니다.';
+                courseName.textContent = '학과명 : 파일이 선택되지 않았습니다.';
                 return;
             }
 
             // 파일 이름 출력
             const fileName = file.name;
-            courseName.textContent = `과목명 : ${fileName}`;
+            courseName.textContent = `학과명 : ${fileName}`;
             const reader = new FileReader();
             reader.onload = function(e) {
-                output.textContent = e.target.result;
+                try {
+                    const courses = JSON.parse(e.target.result);
+                    drawSVGGraph(courses);
+                } catch (error) {
+                    alert('파일 형식이 맞지 않습니다.');
+                }
             };
             reader.readAsText(file);
         });
@@ -64,6 +70,5 @@
             window.location.href = '/index.html';
         });
     </script>
-    <svg></svg>
 </body>
 </html>
