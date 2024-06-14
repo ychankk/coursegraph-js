@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // 초기 설정
 });
 
@@ -77,7 +77,15 @@ function drawSVGGraph(courses) {
     .enter()
     .append('g')
     .attr('class', 'node')
-    .attr('transform', (d) => `translate(${d.x},${d.y})`);
+    .attr('transform', (d) => `translate(${d.x},${d.y})`)
+    .on('mouseover', function (event, d) {
+      d3.select(this)
+        .attr('stroke-width', 2)  // 예시: 테두리 두께를 두껍게
+    })
+    .on('mouseout', function (event, d) {
+      d3.select(this)
+        .attr('stroke-width', 1)  // 원래 테두리 두께로 복구
+    });;
 
   // 노드의 테두리
   node
