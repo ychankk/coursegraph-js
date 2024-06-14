@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/show.css" />
     <link rel="stylesheet" href="/css/search.css">
 </head>
+
 <body>
     <h1 id="courseName">학과명 :</h1>
     <button id="backButton">돌아가기</button>
@@ -21,7 +23,7 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./js/main.js"></script>
     <script>
-        document.getElementById('fileInput').addEventListener('change', function(event) {
+        document.getElementById('fileInput').addEventListener('change', function (event) {
             const file = event.target.files[0];
             const output = document.getElementById('output');
             const courseName = document.getElementById('courseName');
@@ -36,7 +38,7 @@
             const fileName = file.name;
             courseName.textContent = `학과명 : ${fileName}`;
             const reader = new FileReader();
-            reader.onload = function(e) {
+            reader.onload = function (e) {
                 try {
                     const courses = JSON.parse(e.target.result);
                     drawSVGGraph(courses);
@@ -48,27 +50,38 @@
         });
 
         function doSearch(text) {
-            const result = window.find(text);
-            if (!result) {
-                alert('일치하는 과목을 찾을 수 없습니다.');
-            } else {
-                console.log('Text found:', text);
-            }
+            let contents = document.querySelectorAll("text");
+            console.log(contents);
+            let isfind = false;
+            contents.forEach(content => {
+                if (doDeleteSpace(text) == doDeleteSpace(content.textContent)) {
+                    console.log('Text found:', text);
+                    window.find(content.textContent);
+                    isfind = true;
+                }
+            });
+            if (isfind)
+                return;
+            alert('일치하는 과목을 찾을 수 없습니다.');
+        }
+        function doDeleteSpace(text) {
+            return text.split(' ').join('');
         }
 
-        document.getElementById('SearchBtn').addEventListener('click', function() {
+        document.getElementById('SearchBtn').addEventListener('click', function () {
             doSearch(document.getElementById('SearchTxt').value);
         });
 
-        document.getElementById('SearchTxt').addEventListener('keydown', function(event) {
+        document.getElementById('SearchTxt').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 doSearch(event.target.value);
             }
         });
 
-        document.getElementById('backButton').addEventListener('click', function() {
+        document.getElementById('backButton').addEventListener('click', function () {
             window.location.href = '/index.html';
         });
     </script>
 </body>
+
 </html>
