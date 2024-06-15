@@ -69,10 +69,7 @@ body {
   margin: 40px;
   text-align: center;
 }
-.bnt{
-  background-color: rgb(147, 197, 255);
-  border-radius: 20px;
-}
+
 #visualization {
   margin-top: 20px;
   border: 1px solid #ccc;
@@ -300,3 +297,19 @@ main {
 }
 
 /****** Responsive CSS End ******/
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8">
+	<title>RC's HTML5 Boilerplate</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body style="background-image: url('img/1.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+	<button><a href="/Show.html">show</a></button>
+	<button><a href="/input.html">input</a></button>
+	<button><a href="/subject-chart.html">subject</a></button>
+</body>
