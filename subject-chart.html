@@ -18,7 +18,7 @@
 
 <body>
     <h1>과목 이수체계도</h1>
-    <button><a href="/index.html">돌아가기</a></button>
+    <button id="goBackBtn">돌아가기</button>
 
     <br /><br />
     <div id="searchContainer">
@@ -27,6 +27,13 @@
     </div>
     <div id="basicMajor">전공기초(필수)</div>
     <div id="majorSelection">공통권장과목</div>
+
+    <div id="navigation">
+        <button onclick="scrollToSection('1학년')">1학년</button>
+        <button onclick="scrollToSection('2학년')">2학년</button>
+        <button onclick="scrollToSection('3학년')">3학년</button>
+        <button onclick="scrollToSection('4학년')">4학년</button>
+    </div>
 
     <pre class="mermaid">
         %% Subgraph example
@@ -106,8 +113,8 @@
         end
 
         subgraph "캡스톤"
-            I1["캡스턴디자인"]
-            I2["융합캡스턴디자인"]
+            I1["캡스톤디자인"]
+            I2["융합캡스톤디자인"]
         end
         
 
@@ -260,14 +267,28 @@
         mermaid.initialize({ startOnLoad: true });
 
         document.addEventListener('DOMContentLoaded', function () {
+            let searchText = '';
+            let isFirstSearch = true;
+
             function doSearch(text) {
-                if (window.find(text)) {
-                    console.log('Text found:', text);
-                } else {
-                    console.log('Text not found:', text);
-                    alert('일치하는 과목을 찾을 수 없습니다.');
-                }
+                let contents = document.querySelectorAll(".nodeLabel");
+                console.log(contents);
+                let isfind = false;
+                contents.forEach(content => {
+                    if (doDeleteSpace(text) == doDeleteSpace(content.textContent)) {
+                        console.log('Text found:', text);
+                        window.find(content.textContent);
+                        isfind = true;
+                    }
+                });
+                if (isfind)
+                    return;
+                alert('일치하는 과목을 찾을 수 없습니다.');
             }
+            function doDeleteSpace(text) {
+                return text.split(' ').join('');
+            }
+
             document.getElementById('SearchBtn').addEventListener('click', function () {
                 doSearch(document.getElementById('SearchTxt').value);
             });
@@ -321,6 +342,39 @@
 
             console.log('Script loaded and DOM fully parsed');
         });
+
+        // 페이지 로드 시 특정 섹션으로 자동 스크롤
+        window.onload = function () {
+            const element = document.getElementById("basicMajor");
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth", block: "start" });
+            }
+        };
+
+        function scrollToSection(sectionId) {
+            const section = document.querySelector(`subgraph[title="${sectionId}"]`);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+    </script>
+    <script>
+        const subjectDetails = {
+            "웹스크립트프로그래밍": "이 과목은 웹 개발에 필요한 스크립트 언어를 배웁니다.",
+            // 다른 과목의 세부 정보 추가
+        };
+
+        document.getElementById('goBackBtn').addEventListener('click', function () {
+            window.location.href = '/index.html';
+        });
+
+        console.log('Script loaded and DOM fully parsed');
+
+        function doSearch(text) {
+            const content = document.querySelector('.mermaid');
+            const regex = new RegExp(`(${text})`, 'gi');
+            content.innerHTML = content.innerHTML.replace(/(<mark>|<\/mark>)/gim, "").replace(regex, '<mark>$1</mark>');
+        }
     </script>
 </body>
 
