@@ -9,8 +9,8 @@ document.getElementById('goBackBtn').addEventListener('click', function () {
 
 console.log('Script loaded and DOM fully parsed');
 
-function doSearch(text) {
-    const content = document.querySelector('.mermaid');
-    const regex = new RegExp(`(${text})`, 'gi');
-    content.innerHTML = content.innerHTML.replace(/(<mark>|<\/mark>)/gim, "").replace(regex, '<mark>$1</mark>');
-}
+        function doSearch(text) {
+            const content = document.querySelector('.mermaid');
+            const regex = new RegExp(`(${text})`, 'gi');
+            content.innerHTML = content.innerHTML.replace(/(<mark>|<\/mark>)/gim, "").replace(regex, '<mark>$1</mark>');
+        }
