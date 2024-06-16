@@ -272,20 +272,20 @@
             let isFirstSearch = true;
 
             function doSearch(text) {
-                let contents = document.querySelectorAll(".nodeLabel");
-                console.log(contents);
-                let isfind = false;
-                contents.forEach(content => {
-                    if (doDeleteSpace(text) == doDeleteSpace(content.textContent)) {
-                        console.log('Text found:', text);
-                        window.find(content.textContent);
-                        isfind = true;
+                if (isFirstSearch || searchText !== text) {
+                    isFirstSearch = false;
+                    searchText = text;
+                    if (!window.find(text, false, false, true, false, false, false)) {
+                        alert('일치하는 과목을 찾을 수 없습니다.');
+                        isFirstSearch = true;
                     }
-                });
-                if (isfind)
-                    return;
-                alert('일치하는 과목을 찾을 수 없습니다.');
+                } else {
+                    if (!window.find(text, false, false, false, false, false, false)) {
+                        window.find(text, false, false, true, false, false, false);
+                    }
+                }
             }
+            
             function doDeleteSpace(text) {
                 return text.split(' ').join('');
             }
