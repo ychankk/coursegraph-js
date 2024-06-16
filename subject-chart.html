@@ -19,6 +19,7 @@
 <body>
     <h1>과목 이수체계도</h1>
     <button id="goBackBtn">돌아가기</button>
+    <button id="saveAsPngBtn">PNG로 저장</button>
 
     <br /><br />
     <div id="searchContainer">
@@ -35,7 +36,7 @@
         <button onclick="scrollToSection('4학년')">4학년</button>
     </div>
 
-    <pre class="mermaid">
+    <pre id="subjectChart" class="mermaid">
         %% Subgraph example
         graph LR
         
