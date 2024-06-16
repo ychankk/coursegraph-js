@@ -265,6 +265,20 @@
 
     <script type="module" src="js/subject-chart-module.js"></script>
     <script src="js/subject-chart.js"></script>
+    <!-- html2canvas 및 jsPDF 스크립트 추가 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        document.getElementById('saveAsPngBtn').addEventListener('click', function () {
+            html2canvas(document.querySelector("#subjectChart")).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'subject-chart.png';
+                link.href = canvas.toDataURL("image/png");
+                link.click();
+            });
+        });
+
+
+    
 </body>
 
 </html>
