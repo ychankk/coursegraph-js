@@ -34,6 +34,7 @@
         <button onclick="filterCourses('2학년')">2학년</button>
         <button onclick="filterCourses('3학년')">3학년</button>
         <button onclick="filterCourses('4학년')">4학년</button>
+        <button class="button" onclick="resetFilter()">전체</button>
     </div>
     
     <pre id="subjectChart" class="mermaid">
@@ -282,6 +283,11 @@
                 } else {
                     node.classList.add('transparent');
                 }
+            });
+        }
+        function resetFilter() {
+            document.querySelectorAll('.node').forEach(node => {
+                node.classList.remove('transparent');
             });
         }
 
