@@ -61,11 +61,118 @@ html {
   text-size-adjust: none;
 }
 
+/* 기본 스타일 설정 */
 body {
-  font-family: Arial, sans-serif;
-  margin: 40px;
-  text-align: center;
+  font-family: Arial, sans-serif; /* 기본 폰트 */
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4; /* 배경색 */
+  color: #333; /* 기본 텍스트 색상 */
 }
+
+.container {
+  width: 80%;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.header, .footer {
+  background: #003366;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.navbar {
+  background: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.content {
+  min-height: 400px; /* 최소 높이 설정 */
+  line-height: 1.6;
+  padding: 20px;
+}
+
+/* 미디어 쿼리 */
+@media (min-width: 768px) and (max-width: 991px) {
+  .container {
+    width: 95%;
+  }
+
+  .navbar, .content, .footer {
+    padding: 15px;
+  }
+
+  .navbar, .content {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .navbar, .content, .footer {
+    padding: 10px;
+  }
+
+  .navbar, .content {
+    font-size: 14px;
+  }
+
+  .navbar {
+    flex-direction: column; /* 모바일에서는 메뉴 항목을 세로로 정렬 */
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 70%;
+  }
+}
+
+/* 특정 요소에 대한 추가 스타일 */
+a:hover {
+  opacity: 0.7;
+}
+
+h1, h2, h3, h4 {
+  color: #003366;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+  padding: 10px;
+  margin: 5px 0;
+  width: calc(100% - 22px); /* 테두리를 고려한 너비 계산 */
+  box-sizing: border-box;
+}
+
+button, input[type="submit"] {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #002244;
+}
+
 .bnt{
   background-color: rgb(147, 197, 255);
   border-radius: 20px;
