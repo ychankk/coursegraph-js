@@ -22,9 +22,6 @@ test html과 관련한 style 설정
 
 @charset "utf-8";
 
-/*** Fonts Face CSS ***/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
-
 /**** CSS Variables ****/
 
 /** use variables in css property like, background-color: var(--primary-color); */

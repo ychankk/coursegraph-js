@@ -13,6 +13,15 @@
             opacity: 0.2;
             transition: opacity 0.2s;
         }
+
+        body.dark-mode {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        button {
+            margin: 5px;
+        }
     </style>
 </head>
 
@@ -20,6 +29,9 @@
     <h1>과목 이수체계도</h1>
     <button id="goBackBtn">돌아가기</button>
     <button id="saveAsPngBtn">PNG로 저장</button>
+    <button id="disableAllBtn">모든 과목 비활성화</button>
+    <button id="enableAllBtn">모든 과목 활성화</button>
+    <button id="darkModeBtn">다크 모드</button> <!-- 다크 모드 버튼 추가 -->
 
     <button id="disableAllBtn">모든 과목 비활성화</button>
     <button id="enableAllBtn">모든 과목 활성화</button>
@@ -263,7 +275,6 @@
 
     <script type="module" src="js/subject-chart-module.js"></script>
     <script src="js/subject-chart.js"></script>
-    <!-- html2canvas 및 jsPDF 스크립트 추가 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         document.getElementById('saveAsPngBtn').addEventListener('click', function () {
@@ -314,6 +325,43 @@
         });
 
         // Define the scrollToSection function
+
+        document.getElementById('darkModeBtn').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDarkMode = document.body.classList.contains('dark-mode');
+
+            const styleMap = {
+                light: {
+                    "1학년": "#bee9e8",
+                    "2학년": "#87CEFA",
+                    "3학년": "#cae9ff",
+                    "4학년": "#ADD8E6"
+                },
+                dark: {
+                    "1학년": "#3a5a5e",
+                    "2학년": "#2b4a5c",
+                    "3학년": "#3b6d80",
+                    "4학년": "#314e6a"
+                }
+            };
+
+            const styleType = isDarkMode ? 'dark' : 'light';
+
+            document.querySelectorAll('.node').forEach(node => {
+                const nodeId = node.getAttribute('data-id');
+                if (nodeId.startsWith('A') || nodeId.startsWith('B')) {
+                    node.style.fill = styleMap[styleType]["1학년"];
+                } else if (nodeId.startsWith('C') || nodeId.startsWith('D')) {
+                    node.style.fill = styleMap[styleType]["2학년"];
+                } else if (nodeId.startsWith('E') || nodeId.startsWith('F')) {
+                    node.style.fill = styleMap[styleType]["3학년"];
+                } else if (nodeId.startsWith('G') || nodeId.startsWith('H')) {
+                    node.style.fill = styleMap[styleType]["4학년"];
+                }
+            });
+        });
+
+ main
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
         }
