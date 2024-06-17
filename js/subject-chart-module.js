@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
+
     function getChangeDivText(elementId) {
       const element = document.getElementById(elementId); // 실제 DOM 요소를 가져옴
       const text = element.innerText; // 요소의 텍스트 내용을 가져옴
@@ -109,4 +110,22 @@ function scrollToSection(sectionId) {
     if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+}
+
+function filterCourses(year) {
+    const yearSections = {
+        '1학년': ['웹스크립트프로그래밍', '프로그래밍실습', '컴퓨터개론', '확률과 통계', '고급프로그래밍', '정보보호개론', '이산구조', '파이썬프로그래밍'],
+        '2학년': ['시스템프로그래밍', '시스템보안', '자료구조', '오픈소스sw개발', '컴퓨터네트워크', '알고리즘', '계산이론', '객체지향프로그래밍', '컴퓨터구조', '임베디드시스템 및 실습', '양자컴퓨팅개론'],
+        '3학년': ['모바일프로그래밍', '프로그래밍언어론', '머신러닝의이해', '운영체제', '.NET프로그래밍', '네트워크 프로그래밍 및 보안', '인공지능', '컴퓨터그래픽스', '데이터베이스', '소프트웨어공학'],
+        '4학년': ['웹서버프로그래밍', '가상증강현실', '게임서버프로그래밍', '데이터베이스프로그래밍', '역공학', '암호의 이해', '빅데이터', '클라우드컴퓨팅', '블록체인']
+    };
+
+    document.querySelectorAll('.node').forEach(node => {
+        const nodeText = node.textContent || node.innerText;
+        if (yearSections[year].some(course => nodeText.includes(course))) {
+            node.classList.remove('transparent');
+        } else {
+            node.classList.add('transparent');
+        }
+    });
 }

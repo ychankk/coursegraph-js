@@ -30,12 +30,12 @@
     <div id="majorSelection">공통권장과목</div>
 
     <div id="navigation">
-        <button onclick="scrollToSection('1학년')">1학년</button>
-        <button onclick="scrollToSection('2학년')">2학년</button>
-        <button onclick="scrollToSection('3학년')">3학년</button>
-        <button onclick="scrollToSection('4학년')">4학년</button>
+        <button onclick="filterCourses('1학년')">1학년</button>
+        <button onclick="filterCourses('2학년')">2학년</button>
+        <button onclick="filterCourses('3학년')">3학년</button>
+        <button onclick="filterCourses('4학년')">4학년</button>
     </div>
-
+    
     <pre id="subjectChart" class="mermaid">
         %% Subgraph example
         graph LR
@@ -47,7 +47,6 @@
                 A3["컴퓨터개론"]
                 A4["확률과 통계"]
                 end
-                %% 1학년 2학기
                 subgraph "1학년 2학기"
                 B1["고급프로그래밍"]
                 B2["정보보호개론"]
@@ -57,7 +56,6 @@
             end
         
             subgraph "2학년"
-            %% 2학년 1학기
             subgraph "2학년 1학기"
                 C1["시스템프로그래밍"]
                 C2["시스템보안"]
@@ -65,7 +63,6 @@
                 C4["오픈소스sw개발"]
                 C5["컴퓨터네트워크"]
             end
-            %% 2학년 2학기
             subgraph "2학년 2학기"
                 D1["알고리즘"]
                 D2["계산이론"]
@@ -77,15 +74,13 @@
             end
         
             subgraph "3학년"
-                %% 3학년 1학기
                 subgraph "3학년 1학기"
-                    E1["모바일프로그래밍"]
-                    E2["프로그래밍언어론"]
-                    E3["머신러닝의이해"]
-                    E4["운영체제"]
-                    E5[".NET프로그래밍"]
+                E1["모바일프로그래밍"]
+                E2["프로그래밍언어론"]
+                E3["머신러닝의이해"]
+                E4["운영체제"]
+                E5[".NET프로그래밍"]
                 end
-                %% 3학년 2학기
                 subgraph "3학년 2학기"
                 F1["네트워크 프로그래밍 및 보안"]
                 F2["인공지능"]
@@ -96,14 +91,12 @@
             end
 
             subgraph 4학년
-                %% 4학년 1학기
                 subgraph "4학년 1학기"
                 G1["웹서버프로그래밍"]
                 G2["가상증강현실"]
                 G3["게임서버프로그래밍"]
                 G4["데이터베이스프로그래밍"]
-            end
-            %% 4학년 2학기
+                end
                 subgraph "4학년 2학기"
                 H1["역공학"]
                 H2["암호의 이해"]
@@ -119,7 +112,6 @@
         end
         
 
-        %% 학년 간 과목 이수 연결
         A1 --> G1
         A2 --> B1
         A3 --> C1
@@ -196,7 +188,7 @@
         style H3 fill:#fff, stroke:#999999
         style H4 fill:#fff, stroke:#999999
         style H5 fill:#fff, stroke:#999999
-    
+
         style B1 fill:#FFD072, stroke:#b28704
         style B2 fill:#FFD072, stroke:#b28704
         style C2 fill:#FFD072, stroke:#b28704
@@ -212,7 +204,7 @@
         style F4 fill:#FFD072, stroke:#b28704
         style F5 fill:#FFD072, stroke:#b28704
 
-        
+
         linkStyle 0 stroke:red;
         linkStyle 1 stroke:blue;
         linkStyle 2 stroke:green;
@@ -260,12 +252,10 @@
         style 2학년 fill:#87CEFA
         style 3학년 fill:#cae9ff
         style 4학년 fill:#ADD8E6
-        
     </pre>
 
     <script type="module" src="js/subject-chart-module.js"></script>
     <script src="js/subject-chart.js"></script>
-    <!-- html2canvas 및 jsPDF 스크립트 추가 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         document.getElementById('saveAsPngBtn').addEventListener('click', function () {
@@ -276,7 +266,32 @@
                 link.click();
             });
         });
-        </script>    
+
+        function filterCourses(year) {
+            const yearSections = {
+                '1학년': ['A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B4'],
+                '2학년': ['C1', 'C2', 'C3', 'C4', 'C5', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
+                '3학년': ['E1', 'E2', 'E3', 'E4', 'E5', 'F1', 'F2', 'F3', 'F4', 'F5'],
+                '4학년': ['G1', 'G2', 'G3', 'G4', 'H1', 'H2', 'H3', 'H4', 'H5']
+            };
+
+            document.querySelectorAll('.node').forEach(node => {
+                const nodeId = node.getAttribute('data-id');
+                if (yearSections[year].includes(nodeId)) {
+                    node.classList.remove('transparent');
+                } else {
+                    node.classList.add('transparent');
+                }
+            });
+        }
+
+        document.querySelectorAll('#navigation button').forEach(button => {
+            button.addEventListener('click', () => {
+                const year = button.textContent;
+                filterCourses(year);
+            });
+        });
+    </script>    
 </body>
 
 </html>
