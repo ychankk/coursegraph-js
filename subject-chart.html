@@ -33,6 +33,9 @@
     <button id="enableAllBtn">모든 과목 활성화</button>
     <button id="darkModeBtn">다크 모드</button> <!-- 다크 모드 버튼 추가 -->
 
+    <button id="disableAllBtn">모든 과목 비활성화</button>
+    <button id="enableAllBtn">모든 과목 활성화</button>
+
     <br /><br />
     <div id="searchContainer">
         <input type="text" id="SearchTxt" placeholder="Search...">
@@ -46,6 +49,10 @@
         <button onclick="filterCourses('2학년')">2학년</button>
         <button onclick="filterCourses('3학년')">3학년</button>
         <button onclick="filterCourses('4학년')">4학년</button>
+        <button onclick="scrollToSection('1학년')">1학년</button>
+        <button onclick="scrollToSection('2학년')">2학년</button>
+        <button onclick="scrollToSection('3학년')">3학년</button>
+        <button onclick="scrollToSection('4학년')">4학년</button>
     </div>
 
     <pre id="subjectChart" class="mermaid">
@@ -310,13 +317,14 @@
                 document.querySelector(`[data-id="${courseId}"]`).classList.add('transparent');
             });
         });
-
         document.getElementById('enableAllBtn').addEventListener('click', () => {
             const allCourses = ['A1', 'A2', 'A3', 'A4', 'B1', 'B2', 'B3', 'B4', 'C1', 'C2', 'C3', 'C4', 'C5', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'E1', 'E2', 'E3', 'E4', 'E5', 'F1', 'F2', 'F3', 'F4', 'F5', 'G1', 'G2', 'G3', 'G4', 'H1', 'H2', 'H3', 'H4', 'H5', 'I1', 'I2'];
             allCourses.forEach(courseId => {
                 document.querySelector(`[data-id="${courseId}"]`).classList.remove('transparent');
             });
         });
+
+        // Define the scrollToSection function
 
         document.getElementById('darkModeBtn').addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
@@ -353,6 +361,7 @@
             });
         });
 
+ main
         function scrollToSection(sectionId) {
             const section = document.getElementById(sectionId);
         }
