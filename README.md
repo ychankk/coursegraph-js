@@ -43,7 +43,11 @@ Use local IP as host를 활성화 시켜줍니다.
 
 ---
 ![방법6](https://github.com/oss2024hnu/coursegraph-js/assets/162093749/1e7ed3ba-593b-48a9-8a5f-c00ef964902b)<br><br> 
-그림과 같이 우측 하단에 Go Live를 눌러서 실행 하면 라이브 서버를 활성화 시킬 수 있습니다.
+그림과 같이 우측 하단에 Go Live를 눌러서 실행 하면 라이브 서버를 활성화시킬 수 있습니다.
+
+---
+![방법7]!(https://github.com/ohnakyu/coursegraph-js/assets/162093749/b2d2a74f-8b91-479a-935b-e959daad3b2e)<br><br>
+그림과 같이 vs code의 우측 하단에 Port:5500을 클릭하면 라이브 서버를 종료시킬 수 있습니다.
 
 
 # 파이썬에서 웹서버를 띄우는 방법
