@@ -4,6 +4,8 @@ mermaid.initialize({ startOnLoad: true });
 document.addEventListener('DOMContentLoaded', function () {
     let searchText = '';
     let isFirstSearch = true;
+    let isMajorSelectionTransparent = false;
+    let isBasicMajorTransparent = false;
 
     function doSearch(text) {
         let isfind = false;
@@ -34,46 +36,35 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    function toggleTransparency(elementsToResize) {
-        let isTransparent = false;
-        document.querySelectorAll('.node').forEach(node => {
-            if (node.classList.contains('transparent')) {
-                isTransparent = true;
-            }
-        });
-
+    function toggleTransparency(elementsToResize, isTransparent) {
         if (isTransparent) {
-            document.querySelectorAll('.node').forEach(node => {
-                node.classList.remove('transparent');
-            });
-        } else {
-            document.querySelectorAll('.node').forEach(node => {
-                node.classList.add('transparent');
-            });
-
             elementsToResize.forEach(id => {
                 const element = document.querySelector(`[data-id="${id}"]`);
                 if (element) {
                     element.classList.remove('transparent');
                 }
             });
+        } else {
+            elementsToResize.forEach(id => {
+                const element = document.querySelector(`[data-id="${id}"]`);
+                if (element) {
+                    element.classList.add('transparent');
+                }
+            });
         }
     }
 
-    function getChangeDivText(elementId) {
-      const element = document.getElementById(elementId); // 실제 DOM 요소를 가져옴
-      const text = element.innerText; // 요소의 텍스트 내용을 가져옴
-
-      if (text === "전공기초(필수)") {
-          element.innerText = "전공기초(필수)(표시하지않음)";
-      } else if (text === "전공기초(필수)(표시하지않음)") {
-          element.innerText = "전공기초(필수)";
-      } else if (text === "공통권장과목") {
-          element.innerText = "공통권장과목(표시하지않음)";
-      } else if (text === "공통권장과목(표시하지않음)") {
-          element.innerText = "공통권장과목";
-      }
-      
+    function updateButtonState(elementId, isTransparent) {
+        const element = document.getElementById(elementId);
+        if (isTransparent) {
+            if (element.innerText.includes("(표시하지않음)")) {
+                element.innerText = element.innerText.replace("(표시하지않음)", "");
+            }
+        } else {
+            if (!element.innerText.includes("(표시하지않음)")) {
+                element.innerText += "(표시하지않음)";
+            }
+        }
     }
 
     document.getElementById('majorSelection').addEventListener('click', function () {
@@ -81,17 +72,18 @@ document.addEventListener('DOMContentLoaded', function () {
             'B1', 'B2', 'C2', 'C3', 'D1', 'D2', 'D3',
             'C5', 'D4', 'E2', 'E4', 'F2', 'F4', 'F5'
         ];
-        toggleTransparency(elementsToResize);
-        getChangeDivText('majorSelection');
+        isMajorSelectionTransparent = !isMajorSelectionTransparent;
+        toggleTransparency(elementsToResize, isMajorSelectionTransparent);
+        updateButtonState('majorSelection', isMajorSelectionTransparent);
     });
 
     document.getElementById('basicMajor').addEventListener('click', function () {
-      
         const elementsToResize = [
             'A2', 'A3', 'A4', 'B3', 'B4', 'I1', 'I2'
         ];
-        toggleTransparency(elementsToResize);
-        getChangeDivText('basicMajor');
+        isBasicMajorTransparent = !isBasicMajorTransparent;
+        toggleTransparency(elementsToResize, isBasicMajorTransparent);
+        updateButtonState('basicMajor', isBasicMajorTransparent);
     });
 
     console.log('Script loaded and DOM fully parsed');
