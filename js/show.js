@@ -1,6 +1,12 @@
 function drawSVGGraph(courses) {
   const width = 2000;
   const height = 2000;
+  const svgs= document.querySelector('svg');
+  
+  // 모든 자식 요소를 제거합니다.
+  while (svgs.firstChild) {
+    svgs.removeChild(svgs.firstChild);
+  }
   const svg = d3.select('svg').attr('width', width).attr('height', height);
 
   // 학년, 학기별 그룹화
