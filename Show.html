@@ -14,6 +14,17 @@
     <button id="backButton">돌아가기</button>
     <input type="file" id="fileInput" />
     <div id="output"></div>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Enter search term...">
+        <select id="searchFilter">
+            <option value="subject">Subject</option>
+            <option value="professor">Professor</option>
+            <option value="track">Track</option>
+            <option value="credits">Credits</option>
+        </select>
+        <button onclick="performSearch()">Search</button>
+    </div>
+    <div id="searchResults"></div>
     <div id="searchContainer">
         <input type="text" id="SearchTxt" placeholder="Search...">
         <input type="button" id="SearchBtn" value="Search">
@@ -22,6 +33,7 @@
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="/js/show.js"></script>
+    <script src="/js/search.js"></script>
     <script>
         document.getElementById('fileInput').addEventListener('change', function (event) {
             const file = event.target.files[0];
