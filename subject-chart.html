@@ -20,6 +20,7 @@
     <h1>과목 이수체계도</h1>
     <button id="goBackBtn">돌아가기</button>
     <button id="saveAsPngBtn">PNG로 저장</button>
+
     <button id="disableAllBtn">모든 과목 비활성화</button>
     <button id="enableAllBtn">모든 과목 활성화</button>
 
@@ -36,6 +37,10 @@
         <button onclick="filterCourses('2학년')">2학년</button>
         <button onclick="filterCourses('3학년')">3학년</button>
         <button onclick="filterCourses('4학년')">4학년</button>
+        <button onclick="scrollToSection('1학년')">1학년</button>
+        <button onclick="scrollToSection('2학년')">2학년</button>
+        <button onclick="scrollToSection('3학년')">3학년</button>
+        <button onclick="scrollToSection('4학년')">4학년</button>
     </div>
 
     <pre id="subjectChart" class="mermaid">
@@ -258,6 +263,7 @@
 
     <script type="module" src="js/subject-chart-module.js"></script>
     <script src="js/subject-chart.js"></script>
+    <!-- html2canvas 및 jsPDF 스크립트 추가 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         document.getElementById('saveAsPngBtn').addEventListener('click', function () {
@@ -306,7 +312,13 @@
                 document.querySelector(`[data-id="${courseId}"]`).classList.remove('transparent');
             });
         });
+
+        // Define the scrollToSection function
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+        }
     </script>
+
 </body>
 
 </html>
