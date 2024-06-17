@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   // 초기 설정
-  fetch('/data/courses.json')// 상대경로를 절대경로로 변경
+  fetch('/data/ce.json')// 상대경로를 절대경로로 변경
     // 파일을 가져오면 json 파일 형식으로 변환함
     .then(response => {
       if (!response.ok) {
