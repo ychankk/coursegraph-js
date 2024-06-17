@@ -42,11 +42,6 @@ Live Server 관리 버튼을 눌러줍니다.
 Use local IP as host를 활성화 시켜줍니다.
 
 ---
-![방법5](https://github.com/SiRyung/forgitimage/blob/main/coursegraph_js/5.PNG)<br><br>
-그림과 같이 우클릭으로 Open with Live Server를 눌러 실시간으로 반영되는 라이브 서버를 활성화 시킬 수 있습니다.
-종료를 원한다면 Stop Live Server를 클릭하면 라이브 서버가 비활성화 됩니다.
-
----
 ![방법6](https://github.com/oss2024hnu/coursegraph-js/assets/162093749/1e7ed3ba-593b-48a9-8a5f-c00ef964902b)<br><br> 
 그림과 같이 우측 하단에 Go Live를 눌러서 실행 하면 라이브 서버를 활성화 시킬 수 있습니다.
 
